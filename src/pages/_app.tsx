@@ -2,6 +2,7 @@ import "../styles/theme.ts";
 import { ChakraProvider, Flex } from "@chakra-ui/react";
 import { theme } from "../styles/theme";
 import { Header } from "../components/Header";
+import "../components/Slides/styles.css";
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>

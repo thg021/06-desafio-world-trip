@@ -1,25 +1,13 @@
 import { Flex, Text } from "@chakra-ui/react";
+import { GetStaticProps } from "next";
 import { Banner } from "../components/Banner";
 import Separador from "../components/Separator";
 import { Slides } from "../components/Slides";
 import { TravelTypes } from "../components/TravelTypes";
+import { getPrismicClient } from "../services/prismic";
+import Prismic from "@prismicio/client";
 
-const continents = [
-  {
-    background:
-      "https://cdn.pixabay.com/photo/2016/11/18/19/01/paris-1836415_960_720.jpg",
-    name: "Europa",
-    title: "O melhor dos mundos",
-  },
-  {
-    background:
-      "https://cdn.pixabay.com/photo/2016/11/14/03/29/grand-palace-1822487__340.jpg",
-    name: "Asia",
-    title: "Sushi esta aqui ",
-  },
-];
-
-export default function Home() {
+export default function Home({ continents }) {
   return (
     <>
       <Banner />
@@ -36,3 +24,30 @@ export default function Home() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+
+  const response = await prismic.query<any>(
+    [Prismic.predicates.at("document.type", "continents")],
+    {
+      fetch: ["continents.name", "continents.title", "continents.slider"],
+      pageSize: 10,
+    }
+  );
+
+  const continents = response.results.map((continent) => {
+    return {
+      slug: continent.uid,
+      name: continent.data.name,
+      title: continent.data.title,
+      url: continent.data.slider.url,
+    };
+  });
+
+  console.log(JSON.stringify(continents, null, 2));
+
+  return {
+    props: { continents },
+  };
+};

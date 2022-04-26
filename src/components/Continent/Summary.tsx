@@ -4,14 +4,11 @@ interface SummaryProps {
   text: string;
 }
 
-export default function Summary() {
+export default function Summary({ text, countries, languages, cities }) {
   return (
     <Flex justify="space-between">
       <Text flex={0.8} align="justify">
-        A Europa é, por convenção, um dos seis continentes do mundo.
-        Compreendendo a península ocidental da Eurásia, a Europa geralmente
-        divide-se da Ásia a leste pela divisória de águas dos montes Urais, o
-        rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
+        {text}
       </Text>
 
       <HStack spacing={40}>
@@ -22,7 +19,7 @@ export default function Summary() {
             fontSize="4xl"
             lineHeight="1"
           >
-            50
+            {countries}
           </Text>
           <Text fontWeight="bold" color="gray.800">
             países
@@ -35,10 +32,10 @@ export default function Summary() {
             fontSize="4xl"
             lineHeight="1"
           >
-            50
+            {languages}
           </Text>
           <Text fontWeight="bold" color="gray.800">
-            países
+            idiomas
           </Text>
         </Flex>
         <Flex direction="column" align="center" justify="center">
@@ -48,10 +45,10 @@ export default function Summary() {
             fontSize="4xl"
             lineHeight="1"
           >
-            50
+            {cities}
           </Text>
           <Text fontWeight="bold" color="gray.800">
-            países
+            cidades
           </Text>
         </Flex>
       </HStack>

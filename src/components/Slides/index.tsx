@@ -5,10 +5,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
 import Link from "next/link";
 
 type continent = {
-  background: string;
+  slug: string;
+  url: string;
   name: string;
   title: string;
 };
@@ -28,6 +33,7 @@ export function Slides({ continents }: SlidesProps) {
       mt={10}
     >
       <Swiper
+        modules={[Navigation, Pagination, Scrollbar]}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
@@ -35,6 +41,7 @@ export function Slides({ continents }: SlidesProps) {
           delay: 4000,
         }}
         style={{ width: "100%", flex: "1" }}
+        className="bullet"
       >
         {continents.map((continent) => {
           return (
@@ -45,13 +52,13 @@ export function Slides({ continents }: SlidesProps) {
                 align="center"
                 justify="center"
                 direction="column"
-                bgImage={`url('${continent.background}')`}
+                bgImage={`url('${continent.url}')`}
                 bgPosition="100% 30%"
                 bgRepeat="no-repeat"
                 bgSize="cover"
                 textAlign="center"
               >
-                <Link href={`/continent/${continent.name}`}>
+                <Link href={`/continent/${continent.slug}`}>
                   <a>
                     <Heading
                       fontSize={["3xl", "4xl", "5xl"]}
