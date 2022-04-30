@@ -9,19 +9,18 @@ import Prismic from "@prismicio/client";
 
 export default function Home({ continents }) {
   return (
-    <>
+    <Flex mb={30} direction="column">
       <Banner />
-      <Flex mx={24} direction="column" align="center">
+      <Flex mx={[6, 24]} direction="column" align="center">
         <TravelTypes />
         <Separador />
-        <Text fontSize={["2xl"]} fontWeight="medium" align="center">
+        <Text fontSize={["1xl", "2xl"]} fontWeight="medium" align="center">
           Vamos nesta? <br />
           Então escolha seu continente
         </Text>
-
-        <Slides continents={continents} />
       </Flex>
-    </>
+      <Slides continents={continents} />
+    </Flex>
   );
 }
 

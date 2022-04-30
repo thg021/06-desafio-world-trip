@@ -1,4 +1,6 @@
-import { Flex, HStack, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Icon, Text, Tooltip } from "@chakra-ui/react";
+import { RiInformationLine } from "react-icons/ri";
+import { Details } from "./Details";
 
 interface SummaryProps {
   text: string;
@@ -6,51 +8,20 @@ interface SummaryProps {
 
 export default function Summary({ text, countries, languages, cities }) {
   return (
-    <Flex justify="space-between">
+    <Flex justify="space-between" direction={["column", "row"]}>
       <Text flex={0.8} align="justify">
         {text}
       </Text>
 
-      <HStack spacing={40}>
-        <Flex direction="column" align="center" justify="center">
-          <Text
-            fontWeight="bold"
-            color="yellow.900"
-            fontSize="4xl"
-            lineHeight="1"
-          >
-            {countries}
-          </Text>
-          <Text fontWeight="bold" color="gray.800">
-            países
-          </Text>
-        </Flex>
-        <Flex direction="column" align="center" justify="center">
-          <Text
-            fontWeight="bold"
-            color="yellow.900"
-            fontSize="4xl"
-            lineHeight="1"
-          >
-            {languages}
-          </Text>
-          <Text fontWeight="bold" color="gray.800">
-            idiomas
-          </Text>
-        </Flex>
-        <Flex direction="column" align="center" justify="center">
-          <Text
-            fontWeight="bold"
-            color="yellow.900"
-            fontSize="4xl"
-            lineHeight="1"
-          >
-            {cities}
-          </Text>
-          <Text fontWeight="bold" color="gray.800">
-            cidades
-          </Text>
-        </Flex>
+      <HStack mt={[5]} spacing={[6, 40]}>
+        <Details key="paises" value={countries} text={"paises"} />
+        <Details key="idioma" value={languages} text={"Idiomas"} />
+        <Details
+          key="cidades"
+          value={cities}
+          text={"100+ cidades"}
+          tooltip={true}
+        />
       </HStack>
     </Flex>
   );

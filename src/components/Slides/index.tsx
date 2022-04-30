@@ -28,9 +28,9 @@ export function Slides({ continents }: SlidesProps) {
       w="100%"
       h={["250px", "450px"]}
       maxW="1240px"
-      mx="auto"
-      mb={["5", "10"]}
-      mt={10}
+      mx={["auto"]}
+      my={["5", "10"]}
+      px={["0", "10"]}
     >
       <Swiper
         modules={[Navigation, Pagination, Scrollbar]}
@@ -62,7 +62,7 @@ export function Slides({ continents }: SlidesProps) {
                   <a>
                     <Heading
                       fontSize={["3xl", "4xl", "5xl"]}
-                      color="gray.100"
+                      color="white"
                       fontWeight="bold"
                     >
                       {continent.name}

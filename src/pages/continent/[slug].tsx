@@ -18,7 +18,7 @@ export default function Continent({ continent }) {
     <Flex direction="column">
       <Banner url={continent.url} text={continent.name} />
 
-      <Flex mx={24} direction="column" mt="16">
+      <Flex mx={[10, 24]} direction={["column"]} mt="16">
         <Summary
           text={continent.summary}
           cities={continent.cities}

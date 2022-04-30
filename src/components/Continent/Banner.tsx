@@ -12,11 +12,18 @@ export function Banner({ url, text }: BannerProps) {
       bgPosition="center"
       bgRepeat="no-repeat"
       bgSize={"cover"}
-      align="flex-end"
+      align={["center", "flex-end"]}
+      justifyContent={["center", "flex-start"]}
       w="100%"
-      h={420}
+      h={[240, 420]}
     >
-      <Text fontSize="3xl" color="white" fontWeight="bold" mb={8} ml={24}>
+      <Text
+        fontSize="3xl"
+        color="white"
+        fontWeight="bold"
+        mb={[0, 8]}
+        ml={[0, 24]}
+      >
         {text}
       </Text>
     </Flex>

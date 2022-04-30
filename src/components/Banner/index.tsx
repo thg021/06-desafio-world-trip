@@ -1,13 +1,14 @@
-import { Box, Flex, HStack, Img, Stack, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Img, Text } from "@chakra-ui/react";
 
 export function Banner() {
   return (
-    <Box h="320">
+    <Box maxH="320">
       <Flex
         bgImage="url('/images/Background.jpg')"
         bgPosition="center"
         bgRepeat="no-repeat"
-        px={24}
+        px={[4, 24]}
+        py={[4, 12]}
         align="center"
         justify="space-between"
       >
@@ -30,6 +31,7 @@ export function Banner() {
           src="/images/Airplane.svg"
           alt="airplane"
           transform="translateY(32px)"
+          display={["none", "block"]}
         />
       </Flex>
     </Box>

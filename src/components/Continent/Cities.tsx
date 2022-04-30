@@ -2,7 +2,7 @@ import { Box, SimpleGrid, Image, Text, Avatar } from "@chakra-ui/react";
 
 export default function Cities({ listCities }) {
   return (
-    <SimpleGrid columns={4} spacing={10} mb={8}>
+    <SimpleGrid columns={[1, 4]} spacing={10} mb={8}>
       {listCities.map((city) => (
         <Box
           maxW="xs"
@@ -12,7 +12,12 @@ export default function Cities({ listCities }) {
           overflow="hidden"
           key={city.city}
         >
-          <Image src={city.url_image_city} alt="test" maxH="128px" w="100%" />
+          <Image
+            src={city.url_image_city}
+            alt="test"
+            h={["220px", "128px"]}
+            w="100%"
+          />
 
           <Box p="6" bg="white">
             <Box
